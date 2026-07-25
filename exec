@@ -1,0 +1,7 @@
+with open('teste01.py','r',encoding='utf-8') as arquivo:
+    ctd = arquivo.read()
+    exec(ctd)
+
+with open('separador_de_dados.py','r',encoding='utf-8') as arq:
+    app = arq.read()
+    exec(app)
