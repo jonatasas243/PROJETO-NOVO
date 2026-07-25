@@ -1,0 +1,50 @@
+import os
+import csv
+dado="dados.csv"
+
+
+###INICIA O BANCO DE DADOS
+def dados_iniciar():
+    if not os.path.exists(dado):
+        with open(dado,'w',newline='',encoding='utf-8')as dd:
+            escrever=csv.writer(dd)
+            escrever.writerow(['nome','texto'])
+
+
+###LER ESSES DADOS
+def salva_dados():
+    print("\n -----LISTA DE DADOS REGISTRADOS-----")
+    nome=input("digite um nome do arquivo")
+    texto=input("digite uma descricao ou um texto")
+
+    with open(dado,'a',newline='',encoding='utf8') as dd:
+        grava=csv.writer(dd)
+        grava.writerow([nome,texto])
+    print('dados salvo com sucesso')
+
+
+def ler_dados():
+    print("\n-----LISTA DE DADOS ")
+    with open(dado,'r',encoding='utf8') as arq:
+        ler = csv.DictReader(arq)
+        for linha in ler:
+            print(linha["nome"],linha["texto"])
+
+
+def tela_inicial():
+    dados_iniciar()
+    print("="*30)
+    print('TELA INICIAL')
+    print("="*30)
+    print("1 salva seus dados")
+    print("2 ler seus dados")
+    pp=input("1 ou 2")
+    if pp=='1':
+        salva_dados()
+    elif pp=="2":
+        ler_dados()
+    else:
+        print("codigo nao reconhecido")
+
+
+tela_inicial()
